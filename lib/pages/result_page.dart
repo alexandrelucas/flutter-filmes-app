@@ -53,6 +53,12 @@ class _ResultPageState extends State<ResultPage> {
     setState(() => _movieCtrl.loading = true);
     await _movieCtrl.fetchMoviesBySearch(query: widget.title);
     setState(() => _movieCtrl.loading = false);
+     
+     // Ordenação por data
+    _movieCtrl.movies.sort((b, a) {
+      if(a.releaseDate == null || b.releaseDate == null) return -1;
+          return a.releaseDate.compareTo(b.releaseDate);
+      });
   }
 
   void _onSubmit(String value) {

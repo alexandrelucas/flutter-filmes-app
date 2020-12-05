@@ -30,11 +30,6 @@ class MovieSearchController {
       } else {
         movieResponseModel.page = movie.page;
         movieResponseModel.movies.addAll(movie.movies);
-        // Ordenação por data
-        movieResponseModel.movies.sort((b, a) {
-          if(a.releaseDate == null || b.releaseDate == null) return -1;
-          return a.releaseDate.compareTo(b.releaseDate);
-        });
       }
     });
     return result;

@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:filmesApp/controllers/movie_detail_controller.dart';
 import 'package:filmesApp/widgets/utils/centered_message.dart';
 import 'package:filmesApp/widgets/utils/centered_progress.dart';
