@@ -15,17 +15,20 @@ class ChipDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      backgroundColor: color.withOpacity(0.3),
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      avatar: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        child: Icon(Icons.calendar_today, size: 18, color: Colors.white)
-      ),
-      label: Text(
-        DateFormat(dateFormat).format(date),
-        textAlign: TextAlign.end,
-        style: TextStyle(color: Colors.white, fontSize: 18),
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Chip(
+        backgroundColor: color.withOpacity(0.3),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        avatar: CircleAvatar(
+          backgroundColor: Colors.transparent,
+          child: Icon(Icons.calendar_today, size: 14, color: Colors.white)
+        ),
+        label: Text(
+          DateFormat(dateFormat).format(date),
+          textAlign: TextAlign.end,
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        ),
       ),
     );
   }

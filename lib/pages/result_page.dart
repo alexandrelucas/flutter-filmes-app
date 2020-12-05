@@ -103,7 +103,8 @@ class _ResultPageState extends State<ResultPage> {
   Widget _buildMovieCard(context, index) {
     final movie = _movieCtrl.movies[index];
     return MovieCard(
-      posterPath: movie.posterPath ?? Icons.warning,
+      posterPath: movie.posterPath ?? '',
+      title: movie.title,
       onTap: () => _movieDetailPage(movie.id),
     );
   }

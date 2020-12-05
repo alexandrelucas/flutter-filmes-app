@@ -18,23 +18,25 @@ class MovieSearchController {
   int get totalPages => movieResponseModel?.totalPages ?? 1;
   int get currentPage => movieResponseModel?.page ?? 1;
 
-  Future<Either<MovieError, MovieResponseModel>> fetchMoviesBySearch({String query, int page = 1}) async {
+  Future<Either<MovieError, MovieResponseModel>> fetchMoviesBySearch(
+      {String query, int page = 1}) async {
     movieError = null;
-    
-    final result = await _repository.fetchMoviesBySearch(query,page);
 
-    result.fold(
-      (error) => movieError = error,
-      (movie) {
-        if (movieResponseModel == null) 
-          movieResponseModel = movie;
-        else {
-          movieResponseModel.page = movie.page;
-          movieResponseModel.movies.addAll(movie.movies);
-        }
+    final result = await _repository.fetchMoviesBySearch(query, page);
+
+    result.fold((error) => movieError = error, (movie) {
+      if (movieResponseModel == null) {
+        movieResponseModel = movie;
+      } else {
+        movieResponseModel.page = movie.page;
+        movieResponseModel.movies.addAll(movie.movies);
+        // Ordenação por data
+        movieResponseModel.movies.sort((b, a) {
+          if(a.releaseDate == null || b.releaseDate == null) return -1;
+          return a.releaseDate.compareTo(b.releaseDate);
+        });
       }
-    );
-
+    });
     return result;
   }
 }

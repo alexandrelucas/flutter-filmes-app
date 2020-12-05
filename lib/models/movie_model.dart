@@ -39,16 +39,16 @@ class MovieModel {
     popularity: json['popularity'].toDouble(),
     voteCount: json['vote_count'],
     video: json['video'],
-    posterPath: json['poster_path'] == null ? '' : json['poster_path'],
+    posterPath: json['poster_path'],
     id: json['id'],
     adult: json['adult'],
-    backdropPath: json['backdrop_path'] == null ? '' : json['backdrop_path'],
-    originalLanguage: json['original_language'] ?? '',
-    originalTitle: json['original_title'] ?? '',
-    //genreIds: List<int>.from(json['genre_ids']).map((e) => fromJson(e)),
-    title: json['title'] ?? '',
+    backdropPath: json['backdrop_path'],
+    originalLanguage: json['original_language'],
+    originalTitle: json['original_title'],
+    genreIds: List<int>.generate(json['genre_ids'].length, (index) => json['genre_ids'][index]),
+    title: json['title'],
     voteAverage: json['vote_average'].toDouble(),
-    overview: json['overview'] ?? '',
-    releaseDate: DateTime.tryParse(json['release_date']) ?? DateTime(0,0,0)
+    overview: json['overview'],
+    releaseDate: DateTime.tryParse(json['release_date']?.toString() ?? DateTime(0,0,0)) ?? DateTime(0,0,0)
   );
 }

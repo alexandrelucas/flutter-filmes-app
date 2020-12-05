@@ -55,14 +55,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     List<Widget> listItems = List();
 
     listItems.add(_buildStatus());
-    listItems.add(_buildOverview());
-    listItems.add(_buildStatus());
-    listItems.add(_buildOverview());
-    listItems.add(_buildStatus());
-    listItems.add(_buildOverview());
-    listItems.add(_buildStatus());
-    listItems.add(_buildOverview());
-    listItems.add(_buildStatus());
+    listItems.add(_buildGenresList());
+    listItems.add(_buildLanguageList());
     listItems.add(_buildOverview());
 
     return listItems;
@@ -82,7 +76,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
   Widget _buildOverview() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      padding: const EdgeInsets.fromLTRB(15, 20, 15, 25),
       child: Text(
         _controller.movieDetail.overview,
         textAlign: TextAlign.justify,
@@ -98,18 +92,48 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Rate(_controller.movieDetail.voteAverage),
-          ChipDate(date: _controller.movieDetail.releaseDate)
+          _controller.movieDetail.releaseDate != DateTime(1, 1, 1)
+              ? ChipDate(date: _controller.movieDetail.releaseDate)
+              : Container(),
         ],
       ),
     );
   }
 
-  Widget _buildCover() {
-    return CachedNetworkImage(
-      imageUrl:
-          'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
-      fit: BoxFit.cover,
-      placeholder: (context, url) => CenteredProgress(),
+  Widget _buildGenresList() {
+    return Row(
+      children: [
+        ..._controller.movieDetail.genres.map((e) => Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Chip(
+                label: Text(e.name),
+            ))
+        )],
     );
+  }
+  Widget _buildLanguageList() {
+    return Row(
+      children: [
+        ..._controller.movieDetail.spokenLanguages.map((e) => Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Chip(
+                label: Text(e.name),
+            ))
+        )],
+    );
+  }
+
+  Widget _buildCover() {
+    return _controller.movieDetail.backdropPath != null
+        ? CachedNetworkImage(
+            imageUrl:
+                'https://image.tmdb.org/t/p/w500${_controller.movieDetail.backdropPath}',
+            fit: BoxFit.cover,
+            placeholder: (context, url) => CenteredProgress(),
+          )
+        : Icon(
+            Icons.movie_creation,
+            size: 128,
+          );
   }
 }

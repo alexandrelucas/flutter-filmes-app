@@ -13,7 +13,7 @@ class MovieRepository {
   Future<Either<MovieError, MovieResponseModel>> fetchAllMovies(
       int page) async {
     try {
-      final response = await apiReq.get('/movie/popular?page=$page');
+      final response = await apiReq.get('/movie/popular?page=$page&language=$language');
       final model = MovieResponseModel.fromMap(response.data);
       return Right(model);
     } on DioError catch (error) {

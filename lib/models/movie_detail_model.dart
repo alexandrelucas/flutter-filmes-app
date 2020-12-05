@@ -78,7 +78,7 @@ class MovieDetailModel {
     posterPath: json['poster_path'],
     productionCompanies: List<ProductionCompanyModel>.from(json['production_companies'].map((prod) => ProductionCompanyModel.fromMap(prod))),
     productionCountries: List<ProductionCountryModel>.from(json['production_countries'].map((prod) => ProductionCountryModel.fromMap(prod))),
-    releaseDate: DateTime.parse(json['release_date']),
+    releaseDate: DateTime.tryParse(json['release_date']) ?? DateTime(1,1,1),
     revenue: json['revenue'],
     runtime: json['runtime'],
     spokenLanguages: List<SpokenLanguageModel>.from(json['spoken_languages'].map((prod) => SpokenLanguageModel.fromMap(prod))),
