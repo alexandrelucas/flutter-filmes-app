@@ -1,4 +1,4 @@
-# Filmes APp
+# Filmes App
 ## Desafio Flutter para a Empresa Evo Systems
 
  O Desafio consiste em desenvolver uma aplicação que realiza consultas através da api do site themoviedb.org.
