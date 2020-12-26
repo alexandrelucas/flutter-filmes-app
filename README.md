@@ -7,9 +7,9 @@ Projeto baseado no artigo [Criando um aplicativo em Flutter para consumir uma AP
 
 
 # Screen Shots do Projeto
-![Tela Inicial](screenshots/screenshot01.png?raw=false "Tela Inicial")
-![Tela de Resultados](screenshots/screenshot02.png?raw=false "Tela de Resultados")
-![Tela de Detalhes do Filme](screenshots/screenshot03.png?raw=false "Tela de Detalhes do Filme")
+![Tela Inicial](screenshots/screenshot01.png?raw=false "Tela Inicial" | width=300)
+![Tela de Resultados](screenshots/screenshot02.png?raw=false "Tela de Resultados" | width=300)
+![Tela de Detalhes do Filme](screenshots/screenshot03.png?raw=false "Tela de Detalhes do Filme" | width=300)
 
 
 
