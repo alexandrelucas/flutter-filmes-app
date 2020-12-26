@@ -7,7 +7,7 @@ Projeto baseado no artigo [Criando um aplicativo em Flutter para consumir uma AP
 
 
 # Screen Shots do Projeto
-![Tela Inicial](screenshots/screenshot01.png)
+![Tela Inicial](screenshots/screenshot01.png | width=300)
 ![Tela de Resultados](screenshots/screenshot02.png)
 ![Tela de Detalhes do Filme](screenshots/screenshot03.png)
 
