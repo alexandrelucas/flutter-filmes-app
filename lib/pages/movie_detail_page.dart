@@ -101,25 +101,32 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   Widget _buildGenresList() {
-    return Row(
-      children: [
-        ..._controller.movieDetail.genres.map((e) => Container(
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: Chip(
-                label: Text(e.name),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+          children: [
+            ..._controller.movieDetail.genres.map((e) => Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: Chip(
+                  label: Text(e.name),
+                )
             ))
-        )],
+          ],
+      ),
     );
   }
   Widget _buildLanguageList() {
-    return Row(
-      children: [
-        ..._controller.movieDetail.spokenLanguages.map((e) => Container(
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: Chip(
-                label: Text(e.name),
+    return SingleChildScrollView(
+      child: Row(
+          children: [
+          ..._controller.movieDetail.spokenLanguages.map((e) => Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: Chip(
+                  label: Text(e.name),
+                )
             ))
-        )],
+          ],
+      ),
     );
   }
 

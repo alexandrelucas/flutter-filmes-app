@@ -18,7 +18,9 @@ class SearchBox extends StatelessWidget {
       controller: controller,
       textInputAction: TextInputAction.search,
       onSubmitted: search,
+      
       decoration: InputDecoration(
+        filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(5))
         ),

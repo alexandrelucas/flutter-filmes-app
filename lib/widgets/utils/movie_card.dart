@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class MovieCard extends StatelessWidget {
   final String posterPath;
@@ -9,12 +8,14 @@ class MovieCard extends StatelessWidget {
   const MovieCard({Key key, this.posterPath, this.onTap, this.title})
       : super(key: key);
 
-  void _onLongPress() {
-    Fluttertoast.showToast(
-      msg: this.title,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-    );
+  void _onLongPress(context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('${this.title}', style: TextStyle(color: Theme.of(context).textTheme.bodyText1.color),),
+        duration: Duration(milliseconds: 1400),
+        elevation: 5,
+        backgroundColor: Theme.of(context).primaryColorDark,
+        behavior: SnackBarBehavior.floating,
+    ));
   }
 
   @override
@@ -24,7 +25,7 @@ class MovieCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      onLongPress: _onLongPress,
+      onLongPress: () => _onLongPress(context),
       child: validate
           ? Container(
               decoration: BoxDecoration(
